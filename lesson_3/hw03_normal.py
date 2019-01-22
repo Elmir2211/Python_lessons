@@ -3,7 +3,13 @@
 # Первыми элементами ряда считать цифры 1 1
 
 def fibonacci(n, m):
-    pass
+    f=[1,1]
+    i=2
+    while i<m:
+        f.append(f[i-2]+f[i-1])
+        i+=1
+    return f[n-1:m]
+print(fibonacci(3,20))
 
 # Задача-2:
 # Напишите функцию, сортирующую принимаемый список по возрастанию.
@@ -12,15 +18,47 @@ def fibonacci(n, m):
 
 
 def sort_to_max(origin_list):
-    pass
+    for i in range((len(origin_list) - 1), -1, -1):
+        for j in range(i):
+            if origin_list[j] > origin_list[j + 1]:
+                swap = origin_list[j + 1]
+                origin_list[j + 1] = origin_list[j]
+                origin_list[j] = swap
+    return origin_list
 
-sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0])
+print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 
 # Задача-3:
 # Напишите собственную реализацию стандартной функции filter.
 # Разумеется, внутри нельзя использовать саму функцию filter.
 
+def filtr(str,lst):
+    new_lst=[]
+    for h in range(len(lst)):
+        if lst[h]==str:
+            new_lst.append(lst[h])
+    return new_lst
+L=['кукуруза','картофель','баклажан','кукуруза','баклажан','картофель','кукуруза','баклажан','тыква','картофель','кукуруза','баклажан','картофель']
+print(L)
+print(filtr('картофель',L))
+
 
 # Задача-4:
 # Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
 # Определить, будут ли они вершинами параллелограмма.
+
+A1=(1,3)
+A2=(0,2)
+A3=(1,1)
+A4=(2,2)
+print('Даны 4 точки: ')
+print('A1',A1)
+print('A2',A2)
+print('A3',A3)
+print('A4',A4)
+def paralellogram(a,b,c,d):
+    if ((a[0]+c[0])/2)==((b[0]+d[0])/2) and ((a[1]+c[1])/2)==((b[1]+d[1])/2):
+        return 'Являются вершинами параллелограма'
+    else:
+        return 'Не являются вершинами параллелограма'
+print(paralellogram(A1,A2,A3,A4))
